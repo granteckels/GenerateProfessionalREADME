@@ -9,12 +9,3 @@ export const data = {
     "githubUsername": "granteckels",
     "email": "geckels1@gmail.com"
 }
-
-// let foo = 
-// `one` + `
-// two
-// `
-
-// foo +=
-// `three`
-// console.log(foo);

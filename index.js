@@ -1,7 +1,7 @@
 // TODO: Include packages needed for this application
 import inquirer from "inquirer";
 import fs from 'fs';
-import { badges } from './utils/generateMarkdown.js'
+import generateMarkdown from './utils/generateMarkdown.js'
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -71,32 +71,7 @@ function writeToFile(fileName, data) {
     keyOrder.map(key => [key, data[key]])
   )
 
-  let doc = '';
-
-  for(const section of Object.keys(data).slice(0,-2)) {
-    if(section === 'Title') {
-      doc = `# ${data[section]}\n\n`;
-    } else {
-      doc += `## ${section}\n\n${data[section]}\n\n`;
-      
-      if(section === 'Description') {
-        // Add License badge
-        doc += badges[data['License']] + '\n\n';
-        // Add Table of Contents after Description
-        doc += '## Table of Contents\n\n';
-        doc += '- [Installation](#installation)\n\n';
-        doc += '- [Usage](#usage)\n\n';
-        doc += '- [License](#license)\n\n';
-        doc += '- [Contributing](#contributing)\n\n';
-        doc += '- [Tests](#tests)\n\n';
-        doc += '- [Questions](#questions)\n\n';
-      }
-    }
-  }
-
-  doc += `## Questions\n\n`;
-  doc += `https://github.com/${data['githubUsername']}\n\n`;
-  doc += `For additional questions contact ${data['email']}`;
+  const doc = generateMarkdown(data);
 
   fs.writeFile(fileName, doc, "utf8", (err) => {
     if(err) console.log(err);
@@ -104,14 +79,14 @@ function writeToFile(fileName, data) {
 }
 
 // TODO: Create a function to initialize app
-function init() {}
-
-import { data } from './testData.js';
-
-writeToFile('README.md', data);
+// function init() {}
 
 // Function call to initialize app
-init();
+// init();
+
+import { data } from './utils/testData.js';
+
+writeToFile('README.md', data);
 
 // inquirer.prompt(questions).then((answers) => {
 //   console.log(JSON.stringify(answers, null, '  '));
