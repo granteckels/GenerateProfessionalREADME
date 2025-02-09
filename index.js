@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
 import inquirer from "inquirer";
 import fs from 'fs';
+import { badges } from './utils/generateMarkdown.js'
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -79,6 +80,8 @@ function writeToFile(fileName, data) {
       doc += `## ${section}\n\n${data[section]}\n\n`;
       
       if(section === 'Description') {
+        // Add License badge
+        doc += badges[data['License']] + '\n\n';
         // Add Table of Contents after Description
         doc += '## Table of Contents\n\n';
         doc += '- [Installation](#installation)\n\n';
