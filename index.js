@@ -89,5 +89,5 @@ function writeToFile(fileName, data) {
 // writeToFile('README.md', data);
 
 inquirer.prompt(questions).then((answers) => {
-  writeToFile('README.md', answers);
+  writeToFile('Generated README.md', answers);
 })
