@@ -89,6 +89,5 @@ function writeToFile(fileName, data) {
 // writeToFile('README.md', data);
 
 inquirer.prompt(questions).then((answers) => {
-  console.log(JSON.stringify(answers, null, '  '));
   writeToFile('README.md', answers);
 })
