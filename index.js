@@ -84,11 +84,11 @@ function writeToFile(fileName, data) {
 // Function call to initialize app
 // init();
 
-import { data } from './utils/testData.js';
+// import { data } from './utils/testData.js';
 
-writeToFile('README.md', data);
+// writeToFile('README.md', data);
 
-// inquirer.prompt(questions).then((answers) => {
-//   console.log(JSON.stringify(answers, null, '  '));
-//   writeToFile('README.md', answers);
-// })
+inquirer.prompt(questions).then((answers) => {
+  console.log(JSON.stringify(answers, null, '  '));
+  writeToFile('README.md', answers);
+})
