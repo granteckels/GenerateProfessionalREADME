@@ -1,9 +1,7 @@
-// TODO: Include packages needed for this application
 import inquirer from "inquirer";
 import fs from 'fs';
 import generateMarkdown from './utils/generateMarkdown.js'
 
-// TODO: Create an array of questions for user input
 const questions = [
   // type: 'input' is default
   {
@@ -52,7 +50,6 @@ const questions = [
   }
 ];
 
-// TODO: Create a function to write README file
 function writeToFile(fileName, data) {
   // Rearrange the data so it's in the correct order
   const keyOrder = [
@@ -77,16 +74,6 @@ function writeToFile(fileName, data) {
     if(err) console.log(err);
   })
 }
-
-// TODO: Create a function to initialize app
-// function init() {}
-
-// Function call to initialize app
-// init();
-
-// import { data } from './utils/testData.js';
-
-// writeToFile('README.md', data);
 
 inquirer.prompt(questions).then((answers) => {
   writeToFile('Generated README.md', answers);
